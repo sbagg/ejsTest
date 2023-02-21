@@ -43,10 +43,7 @@ jobs:
 #         # Input ESJ template string
           template: <div><%= markdown %></div>
           vars-file: |
-            {
-              "markdown": "./index.md",
-            }
-
+            {"markdown": "./index.md"}
 #         # Input ESJ template file path.
 #           template-file: ./index.md
 #         # Input variables. A dictionary of variables in JSON format to be used in the template. 
