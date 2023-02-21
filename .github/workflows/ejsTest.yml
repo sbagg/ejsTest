@@ -39,7 +39,7 @@ jobs:
 #         # Input ESJ template string
 #         template: <div><%= markdown %></div>
 #         # Input ESJ template file path.
-          template-file: ./
+          template-file: ./index.md
 #         # Read the contents of the file into a vars.
 #         vars-file: |
 #           {
