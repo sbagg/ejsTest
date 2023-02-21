@@ -27,8 +27,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - name: Setup Pages
-      uses: actions/configure-pages@v2
+#     - name: Setup Pages
+#       uses: actions/configure-pages@v2
     - name: action-ejs
       # You may pin to the exact commit or the version.
       # uses: jaywcjlove/action-ejs@9744c37783fdb75ced4d793ebc1e7dfce0876a0d
