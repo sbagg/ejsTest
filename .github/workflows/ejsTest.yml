@@ -39,19 +39,15 @@ jobs:
       # uses: jaywcjlove/action-ejs@9744c37783fdb75ced4d793ebc1e7dfce0876a0d
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
-#         # Your GITHUB_TOKEN
-#         ## token: # optional, default is ${{ github.token }}
-#         # Input ESJ template string
-          template: <div><%= markdown %></div>
-          vars-file: |
-            {"markdown": "./index.md"}
-#         # Input ESJ template file path.
-#           template-file: ./index.md
-#         # Input variables. A dictionary of variables in JSON format to be used in the template. 
-#         ## vars: # optional, default is {}
-#         # A JSON format string of options to be passed to the template engine.
-#         ## options: # optional, default is {}
+        # Input ESJ template string
+        template: <div><%= htmlContent %></div>
+#           vars-file: |
+#             {"markdown": "./index.md"}
         # output html path
+        vars: |
+          {
+            "htmlContent": "${{ steps.ejs.outputs.content }}"
+          }
           output: ./_site/index.html
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
