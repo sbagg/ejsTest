@@ -47,7 +47,7 @@ jobs:
         # A JSON format string of options to be passed to the template engine.
         ## options: # optional, default is {}
         # output html path
-        output: ./_site
+        output: _layouts/demo.html
 # Deployment job
   deploy:
     environment:
