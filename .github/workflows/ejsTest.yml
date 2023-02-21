@@ -34,24 +34,20 @@ jobs:
 #       with:
 #         output: build/index.html
     - run: mkdir ./_site
-    - run: echo "${{ steps.ejs.outputs.content }}"
     - name: action-ejs
       # You may pin to the exact commit or the version.
       # uses: jaywcjlove/action-ejs@9744c37783fdb75ced4d793ebc1e7dfce0876a0d
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
         # Input ESJ template string
-        template-file: test/demo.html
-
-#         template: <div><%= htmlContent %></div>
-#           vars-file: |
-#             {"markdown": "./index.md"}
+        template: <div><%= htmlContent %></div>
+        vars-file: |
+            {"markdown": "./index.md"}
         # output html path
-        vars: |
-          {
-            "htmlContent": "${{ steps.ejs.outputs.content }}"
-          }
-          output: ./_site/index.html
+
+        output: ./_site/index.html
+    - run: echo "${{ steps.ejs.outputs.content }}"
+
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
       with:
