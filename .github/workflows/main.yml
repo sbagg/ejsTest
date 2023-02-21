@@ -41,7 +41,11 @@ jobs:
         # Input ESJ template file path.
         ## template-file: # optional
         # Read the contents of the file into a vars.
-        ## vars-file: # optional, default is {}
+        vars-file: |
+          {
+            "markdown": "./README.md",
+            "LICENSE": "./LICENSE"
+          }
         # Input variables. A dictionary of variables in JSON format to be used in the template. 
         ## vars: # optional, default is {}
         # A JSON format string of options to be passed to the template engine.
