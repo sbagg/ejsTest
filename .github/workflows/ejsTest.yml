@@ -29,10 +29,10 @@ jobs:
       uses: actions/checkout@v3
     - name: Setup Pages
       uses: actions/configure-pages@v2
-    - name: Converts Markdown to HTML
-      uses: jaywcjlove/markdown-to-html-cli@main
-      with:
-        output: build/index.html
+#     - name: Converts Markdown to HTML
+#       uses: jaywcjlove/markdown-to-html-cli@main
+#       with:
+#         output: build/index.html
     - name: action-ejs
       # You may pin to the exact commit or the version.
       # uses: jaywcjlove/action-ejs@9744c37783fdb75ced4d793ebc1e7dfce0876a0d
@@ -43,7 +43,7 @@ jobs:
 #         # Input ESJ template string
 #         template: <div><%= markdown %></div>
 #         # Input ESJ template file path.
-          template-file: ./index.md
+          template-file: ./
 #         # Read the contents of the file into a vars.
 #         vars-file: |
 #           {
