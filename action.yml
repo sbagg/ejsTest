@@ -1,47 +1,19 @@
-name: 'action-ejs'
-description: 'A github action to render a ejs template using github context.'
-inputs:
-  token:
-    description: 'Your GITHUB_TOKEN'
-    default: ${{ github.token }}
-    required: false
 
-  template:
-    description: 'Input ESJ template string'
-    required: false
+title: Your awesome title
+email: your-email@example.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
-  template-file:
-    description: 'Input ESJ template file path.'
-    required: false
-  
-  vars-file: 
-    description: 'Read the contents of the file into a vars.'
-    default: '{}'
-    required: false
-  
-  vars: 
-    description: 'Input variables. A dictionary of variables in JSON format to be used in the template. '
-    default: '{}'
-    required: false
-  
-  options: 
-    description: 'A JSON format string of options to be passed to the template engine.'
-    default: '{}'
-    required: false
-
-  output:
-    description: 'output html path'
-    default: build/index.html
-    required: false
-
-outputs:
-  content:
-    description: 'HTML string'
-
-runs:
-  using: 'node16'
-  main: 'lib/main.js'
-
-branding:
-  icon: 'file-text'  
-  color: 'blue'
+# Build settings
+theme: minima
+collections:
+  contexts:
+    output: true
+    permalink: /@context/:path.json
+  schemas:
+    output: true
+    permalink: /:path/
