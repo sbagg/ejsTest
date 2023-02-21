@@ -41,9 +41,9 @@ jobs:
 #         # Your GITHUB_TOKEN
 #         ## token: # optional, default is ${{ github.token }}
 #         # Input ESJ template string
-#         template: <div><%= markdown %></div>
+          template: <div><%- md("index.md") %></div>
 #         # Input ESJ template file path.
-          template-file: ./index.md
+#           template-file: ./index.md
 #         # Read the contents of the file into a vars.
 #         vars-file: |
 #           {
