@@ -33,6 +33,7 @@ jobs:
 #       uses: jaywcjlove/markdown-to-html-cli@main
 #       with:
 #         output: build/index.html
+    - run: mkdir ./_site
     - name: action-ejs
       # You may pin to the exact commit or the version.
       # uses: jaywcjlove/action-ejs@9744c37783fdb75ced4d793ebc1e7dfce0876a0d
@@ -52,7 +53,6 @@ jobs:
 #         ## options: # optional, default is {}
         # output html path
           output: ./_site/index.html
-    - run: ls ./_site
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
       with:
