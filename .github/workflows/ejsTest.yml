@@ -52,7 +52,7 @@ jobs:
 #         ## options: # optional, default is {}
         # output html path
           output: ./_site
-    - run: ls ./site
+    - run: ls ./_site
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
       with:
