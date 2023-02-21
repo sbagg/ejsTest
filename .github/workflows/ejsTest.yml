@@ -40,7 +40,7 @@ jobs:
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
         # Input ESJ template string
-        template: <div><%= htmlContent %></div>
+        template: <div><%= markdown %></div>
         vars-file: |
             {"markdown": "./index.md"}
         # output html path
