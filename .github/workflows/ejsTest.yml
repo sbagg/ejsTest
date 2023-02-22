@@ -44,7 +44,7 @@ jobs:
         # output html path
 
         output: ./_site/index.html
-    - run: echo "${{ steps.ejs.outputs.content }}"
+    - run: echo "${{ context }}"
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
