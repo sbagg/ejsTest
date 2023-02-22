@@ -40,7 +40,7 @@ jobs:
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
         template: |
-          <h1><%= env.GITHUB_REF %></h1> commiter: <%= context.payload.head_commit.author.name %>
+          <h1><%= env.GITHUB_REF %></h1> commiter: <%= context %>
         # output html path
 
         output: ./_site/index.html
