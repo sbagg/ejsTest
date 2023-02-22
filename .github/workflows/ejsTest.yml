@@ -39,11 +39,11 @@ jobs:
       # uses: jaywcjlove/action-ejs@9744c37783fdb75ced4d793ebc1e7dfce0876a0d
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
-        template: |
-          <h1><%= env.GITHUB_REF %></h1> commiter: <%= context %>
+#         template: |
+#           <h1><%= env.GITHUB_REF %></h1> commiter: <%= context %>
         # output html path
 
-        output: ./_site/index.html
+        output: ./_site/
     - run: echo "${{ steps }}"
 
     - name: Upload artifact
