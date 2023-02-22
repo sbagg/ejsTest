@@ -39,10 +39,8 @@ jobs:
       # uses: jaywcjlove/action-ejs@9744c37783fdb75ced4d793ebc1e7dfce0876a0d
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
-        # Input ESJ template string
-        template: <div><%= markdown %></div>
-        vars-file: |
-            {"markdown": "./index.md"}
+        template: |
+          <h1><%= env.GITHUB_REF %></h1> commiter: <%= context.payload.head_commit.author.name %>
         # output html path
 
         output: ./_site/index.html
