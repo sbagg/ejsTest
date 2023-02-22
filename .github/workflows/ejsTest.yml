@@ -43,7 +43,7 @@ jobs:
           <h1><%= env.GITHUB_REF %></h1> commiter: <%= conclusion %>
         # output html path
         vars: |
-          { "name": "${{ github.repository }}", "conclusion": "${{ steps }}" }
+          { "name": "${{ github.repository }}", "conclusion": "${{ context.payload }}" }
         output: ./_site/
     - run: echo "${{ steps }}"
 
