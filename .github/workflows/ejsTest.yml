@@ -42,11 +42,9 @@ jobs:
         template: |
           <h1><%= env.GITHUB_REF %></h1> commiter: <%= conclusion %>
         # output html path
-        vars: |
-          { "name": "${{ github.repository }}", "conclusion": "${{ context.payload }}" }
+        vars-file: |
+          {"markdown": "./about.md" }
         output: ./_site/
-    - run: echo "${{ steps }}"
-
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
       with:
