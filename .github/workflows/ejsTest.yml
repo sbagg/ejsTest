@@ -44,11 +44,11 @@ jobs:
         # output html path
         vars-file: |
           {"markdown": "./about.md" }
-        output: ./_site/
+        output: ./_site/index.html
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
       with:
-        path: ./_site/index.html
+        path: ./_site/
 # Deployment job
   deploy:
     environment:
