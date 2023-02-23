@@ -40,7 +40,7 @@ jobs:
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
         template: |
-          <h1> commiter: <%= markdown %></h1>
+          <%= markdown %>
         # output html path
         vars-file: |
           {"markdown": "./about.md" }
