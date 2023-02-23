@@ -40,7 +40,7 @@ jobs:
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
         template: |
-          <h1><%= env.GITHUB_REF %></h1> commiter: <%= conclusion %>
+          <h1> commiter: <%= markdown %></h1>
         # output html path
         vars-file: |
           {"markdown": "./about.md" }
