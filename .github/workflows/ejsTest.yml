@@ -48,7 +48,7 @@ jobs:
                MD_Array[$name]=$i;  
            fi
         done
-        echo "schema=${toJSON(Schema_Array)}" >> $GITHUB_ENV
+        echo "schema=toJSON(${Schema_Array})" >> $GITHUB_ENV
         echo "md=${MD_Array}" >> $GITHUB_ENV
     - run: ${env.schema[@]}
     - name: action-ejs
