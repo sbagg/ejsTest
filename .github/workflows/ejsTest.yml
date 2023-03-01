@@ -34,12 +34,16 @@ jobs:
 #       with:
 #         output: build/index.html
     - run: |
+        counter=0
         for i in $(find . -name '*.md' -type f -print)
         do
             if [[ $i == *"/_schemas/"* ]]; then
               echo ${i##*/}
+              let counter=counter+1;
+              Schema_Array[$counter]=$i;
             fi
         done
+        echo ${Schema_Array[@]}
 
     - name: action-ejs
       # You may pin to the exact commit or the version.
