@@ -15,4 +15,3 @@ done
 echo ${MD_Array[@]}
 echo "schema=${Schema_Array}" >> $GITHUB_ENV
 echo "md=${MD_Array}" >> $GITHUB_ENV
-echo "${{ env.md }}"
