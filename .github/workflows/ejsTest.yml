@@ -40,6 +40,7 @@ jobs:
             if [[ $i == *"/_schemas/"* ]]; then
              # echo ${i##*/}
               let counter=counter+1;
+              echo ${i}
               Schema_Array[$counter]=${i};
             fi
         done
