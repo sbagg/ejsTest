@@ -37,7 +37,7 @@ jobs:
         for i in $(find . -name '*.md' -type f -print)
         do
             if [[ $i == *"/_schemas/"* ]]; then
-              echo ${i##/:}
+              echo ${i##*/}
             fi
         done
 
