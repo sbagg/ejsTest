@@ -43,9 +43,8 @@ jobs:
               Schema_Array[$counter]=$i;
             fi
         done
-        GITHUB_ENV.schema = ${Schema_Array[@]}
-        echo ${{env}}
-        echo ${{GITHUB_ENV}}
+        echo "schema=${Schema_Array}" >> $GITHUB_ENV
+        echo "${{ env.schema }}"
 
 
     - name: action-ejs
