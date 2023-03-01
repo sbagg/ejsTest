@@ -49,7 +49,7 @@ jobs:
                echo $MD_Array
            fi
         done
-        echo "schema=${Schema_Array[@]}" >> $GITHUB_ENV
+        echo "schema=${Schema_Array}" >> $GITHUB_ENV
         echo "md=${MD_Array[@]}" >> $GITHUB_ENV
         
     - run: "${{ env.schema }}"
