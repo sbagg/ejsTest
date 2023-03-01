@@ -34,7 +34,7 @@ jobs:
 #       with:
 #         output: build/index.html
     - run: |
-        for i in $(find . -type f -print)
+        for i in $(find . -name '*.md' -type f -print)
         do
             echo "$i"
         done
