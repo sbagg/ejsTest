@@ -34,7 +34,7 @@ jobs:
 #       with:
 #         output: build/index.html
     - run: bash ${GITHUB_WORKSPACE}/md.sh
-    - run: echo "${{ env.schema }}"
+    - run: echo "$GITHUB_CONTEXT"
     - name: action-ejs
       # You may pin to the exact commit or the version.
       # uses: jaywcjlove/action-ejs@9744c37783fdb75ced4d793ebc1e7dfce0876a0d
