@@ -41,7 +41,7 @@ jobs:
              # echo ${i##*/}
               let counter=counter+1;
               echo ${i}
-              Schema_Array[$counter]=${i};
+              Schema_Array[$counter]=$i;
             fi
         done
         echo "schema=${Schema_Array}" >> $GITHUB_ENV
