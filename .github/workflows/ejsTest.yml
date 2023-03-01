@@ -36,7 +36,9 @@ jobs:
     - run: |
         for i in $(find . -name '*.md' -type f -print)
         do
-            echo "$i"
+            if [[ $string == *"My long"* ]]; then
+              echo "$i"
+            fi
         done
 
     - name: action-ejs
