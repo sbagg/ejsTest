@@ -46,6 +46,7 @@ jobs:
                tmp=${i##*/}
                name=${tmp%.md} 
                MD_Array[$name]=$i;  
+               echo $MD_Array
            fi
         done
         echo "$Schema_Array"
