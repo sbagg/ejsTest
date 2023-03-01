@@ -48,8 +48,8 @@ jobs:
                MD_Array[$name]=$i;  
            fi
         done
-        echo "${Schema_Array}"
-        echo "${MD_Array}"
+        echo "$Schema_Array"
+        echo "$MD_Array"
         echo "schema=${Schema_Array}" >> $GITHUB_ENV
         echo "md=${MD_Array}" >> $GITHUB_ENV
 
