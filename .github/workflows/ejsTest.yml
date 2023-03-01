@@ -36,7 +36,7 @@ jobs:
     - run: |
         for i in $(find . -name '*.md' -type f -print)
         do
-            if [[ $string == *"My long"* ]]; then
+            if [[ $i == *"/_schemas/"* ]]; then
               echo "$i"
             fi
         done
