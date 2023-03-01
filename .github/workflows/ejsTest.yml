@@ -33,29 +33,8 @@ jobs:
 #       uses: jaywcjlove/markdown-to-html-cli@main
 #       with:
 #         output: build/index.html
-    - run: |
-        counter=0
-        declare -A MD_Array
-        for i in $(find . -name '*.md' -type f -print)
-        do
-            if [[ $i == *"/_schemas/"* ]]; 
-              then
-               # echo ${i##*/}
-                let counter=counter+1;
-                Schema_Array[$counter]=$i; 
-              else
-                tmp=${i##*/}
-                name=${tmp%.md} 
-                MD_Array[$name]=$i; 
-              
-            fi
-        done
-        echo ${MD_Array[@]}
-        echo "schema=${Schema_Array}" >> $GITHUB_ENV
-        echo "md=${MD_Array}" >> $GITHUB_ENV
-        echo "${{ env }}"
-
-
+    - run: bash ${GITHUB_WORKSPACE}/md.sh
+      
     - name: action-ejs
       # You may pin to the exact commit or the version.
       # uses: jaywcjlove/action-ejs@9744c37783fdb75ced4d793ebc1e7dfce0876a0d
