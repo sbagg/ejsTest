@@ -50,7 +50,7 @@ jobs:
         done
         echo "schema=(${Schema_Array[@]})" >> $GITHUB_ENV
         echo "md=(${MD_Array[@]})" >> $GITHUB_ENV
-    - run: echo ${{ env.schema[0] }}
+    - run: echo ${{ env.schema[1] }}
     - name: action-ejs
       # You may pin to the exact commit or the version.
       # uses: jaywcjlove/action-ejs@9744c37783fdb75ced4d793ebc1e7dfce0876a0d
