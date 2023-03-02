@@ -29,10 +29,6 @@ jobs:
       uses: actions/checkout@v3
     - name: Setup Pages
       uses: actions/configure-pages@v2
-#     - name: Converts Markdown to HTML
-#       uses: jaywcjlove/markdown-to-html-cli@main
-#       with:
-#         output: build/index.html
     - run: |
         counter=0
         declare -A MD_Array
@@ -48,9 +44,8 @@ jobs:
                MD_Array[$name]=$i;  
            fi
         done
-        echo "schema=(${Schema_Array[@]})" >> $GITHUB_ENV
-        echo "md=(${MD_Array[@]})" >> $GITHUB_ENV
-        echo ${{ fromJSON( env.schema )}}
+        echo "matrix=${Schema_Array}" >> $GITHUB_OUTPUT
+        echo ${{ fromJSON(build.outputs.matrix) }}
     - name: action-ejs
       # You may pin to the exact commit or the version.
       # uses: jaywcjlove/action-ejs@9744c37783fdb75ced4d793ebc1e7dfce0876a0d
