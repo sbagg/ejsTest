@@ -48,14 +48,9 @@ jobs:
                MD_Array[$name]=$i;  
            fi
         done
-        echo ${Schema_Array}
+        echo ${Schema_Array[@]}
         echo "schema=(${Schema_Array[@]})" >> $GITHUB_ENV
         echo "md=(${MD_Array[@]})" >> $GITHUB_ENV
-    - run: | 
-        for item in ${env.schema[*]}
-        do
-            echo "$item"
-        done
     - name: action-ejs
       # You may pin to the exact commit or the version.
       # uses: jaywcjlove/action-ejs@9744c37783fdb75ced4d793ebc1e7dfce0876a0d
