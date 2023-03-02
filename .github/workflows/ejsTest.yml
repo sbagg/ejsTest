@@ -48,7 +48,7 @@ jobs:
                MD_Array[$name]=$i;  
            fi
         done
-        echo ${Schema_Array[@]}
+        echo ${Schema_Array[0]}
         echo "schema=(${Schema_Array[@]})" >> $GITHUB_ENV
         echo "md=(${MD_Array[@]})" >> $GITHUB_ENV
     - name: action-ejs
