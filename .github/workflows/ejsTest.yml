@@ -45,7 +45,7 @@ jobs:
            fi
         done
         echo "matrix=${Schema_Array}" >> $GITHUB_OUTPUT
-        echo ${{ fromJSON(build.outputs.matrix) }}
+        echo ${{ fromJSON(outputs.matrix) }}
     - name: action-ejs
       # You may pin to the exact commit or the version.
       # uses: jaywcjlove/action-ejs@9744c37783fdb75ced4d793ebc1e7dfce0876a0d
