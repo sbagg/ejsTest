@@ -44,7 +44,7 @@ jobs:
                MD_Array[$name]=$i;  
            fi
         done
-        echo "$MD_Array"
+        echo "$MD_Array[@]"
 #     - name: action-ejs
 #       uses: jaywcjlove/action-ejs@v1.0.2
 #       with:
