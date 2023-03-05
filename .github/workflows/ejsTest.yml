@@ -28,18 +28,25 @@ jobs:
       - name: Generate matrix with all modules of WhatTheHack repository
         id: set-matrix
         run: |
-          echo "::set-output name=matrix::$(ls -l | grep '^d' | awk -F ' ' '{print $9}' | grep -Po '\d{3}.*' | jq -R -s -c 'split("\n") | map(select(length > 0))')"
+          echo "::set-output name=matrix:index:$(find . -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')"
+          echo "::set-output name=matrix:schemas:$(find ./_schemas -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')"
+          echo "::set-output name=matrix:contexts:$(find ./_contexts -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')"
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
   # Build job
   build:
+    needs: generateInputPaths
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        path: ${{ fromJson(needs.generateInputPaths.outputs.matrix) }}
     steps:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Setup Pages
       uses: actions/configure-pages@v2
-
+    - run: echo "${{ matrix.path }}"
 #     - run: |
 #         counter=0
 #         declare -A MD_Array
