@@ -21,6 +21,16 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  generateInputPaths:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Generate matrix with all modules of WhatTheHack repository
+        id: set-matrix
+        run: |
+          echo "::set-output name=matrix::$(ls -l | grep '^d' | awk -F ' ' '{print $9}' | grep -Po '\d{3}.*' | jq -R -s -c 'split("\n") | map(select(length > 0))')"
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
   # Build job
   build:
     runs-on: ubuntu-latest
@@ -29,6 +39,7 @@ jobs:
       uses: actions/checkout@v3
     - name: Setup Pages
       uses: actions/configure-pages@v2
+
 #     - run: |
 #         counter=0
 #         declare -A MD_Array
@@ -45,11 +56,9 @@ jobs:
 #            fi
 #         done
 #         echo "$MD_Array[@]"
-    - name: action-ejs
-      uses: jaywcjlove/action-ejs@v1.0.2
-      with:
-          path: ${{ github.workspace }}
-          shouldScanSubdirectories: true
+#     - name: action-ejs
+#       uses: jaywcjlove/action-ejs@v1.0.2
+#       with:
 #         template: |
 #           <%= markdown %>
 #         # output html path
