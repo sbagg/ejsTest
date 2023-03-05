@@ -29,25 +29,27 @@ jobs:
       uses: actions/checkout@v3
     - name: Setup Pages
       uses: actions/configure-pages@v2
-    - run: |
-        counter=0
-        declare -A MD_Array
-        for i in $(find . -name '*.md' -type f -print)
-        do
-           if [[ $i == *"/_schemas/"* ]]; 
-             then
-               let counter=counter+1;
-               Schema_Array[$counter]=$i; 
-             else
-               tmp=${i##*/}
-               name=${tmp%.md} 
-               MD_Array[$name]=$i;  
-           fi
-        done
-        echo "$MD_Array[@]"
-#     - name: action-ejs
-#       uses: jaywcjlove/action-ejs@v1.0.2
-#       with:
+#     - run: |
+#         counter=0
+#         declare -A MD_Array
+#         for i in $(find . -name '*.md' -type f -print)
+#         do
+#            if [[ $i == *"/_schemas/"* ]]; 
+#              then
+#                let counter=counter+1;
+#                Schema_Array[$counter]=$i; 
+#              else
+#                tmp=${i##*/}
+#                name=${tmp%.md} 
+#                MD_Array[$name]=$i;  
+#            fi
+#         done
+#         echo "$MD_Array[@]"
+    - name: action-ejs
+      uses: jaywcjlove/action-ejs@v1.0.2
+      with:
+          path: ${{ github.workspace }}
+          shouldScanSubdirectories: true
 #         template: |
 #           <%= markdown %>
 #         # output html path
