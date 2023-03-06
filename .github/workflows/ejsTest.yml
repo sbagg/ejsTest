@@ -28,11 +28,14 @@ jobs:
       - name: Generate matrix with all modules of WhatTheHack repository
         id: set-matrix
         run: |
-          echo "::set-output name=matrix:index:$(find . -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')"
-          echo "::set-output name=matrix:schemas:$(find ./_schemas -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')"
-          echo "::set-output name=matrix:contexts:$(find ./_contexts -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')"
+          echo "::set-output name=index::$(find . -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')"
+          echo "::set-output name=schemas::$(find ./_schemas -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')"
+          echo "::set-output name=contexts::$(find ./_contexts -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')"
     outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      schemas: ${{ steps.set-matrix.outputs.schemas }}
+      index: ${{ steps.set-matrix.outputs.index }}
+      contexts: ${{ steps.set-matrix.outputs.contexts }}
+
   # Build job
   build:
     needs: generateInputPaths
@@ -45,7 +48,7 @@ jobs:
       uses: actions/checkout@v3
     - name: Setup Pages
       uses: actions/configure-pages@v2
-    - run: ${{ needs.generateInputPaths.outputs.matrix }}"
+    - run: echo ${{ fromJSON(needs.generateInputPaths.outputs.matrix) }}"
 #     - run: |
 #         counter=0
 #         declare -A MD_Array
