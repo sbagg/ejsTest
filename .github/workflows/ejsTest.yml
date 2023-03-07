@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        path: ${{ fromJson(needs.generateInputPaths.outputs.matrix) }}
+        path: ${{ fromJson(needs.generateInputPaths.outputs.schemas) }}
     steps:
     - name: Checkout
       uses: actions/checkout@v3
