@@ -64,7 +64,7 @@ jobs:
         # output html path
         vars-file: |
           {"markdown": "${{ matrix.index }}" }
-        output: ./_site/${{ matrix.index }}.html
+        output: ./_site/index.html
       
   buildSchemasPath:
     needs: generateInputPaths
