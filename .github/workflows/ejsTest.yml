@@ -43,8 +43,8 @@ jobs:
     strategy:
       matrix:
         schemas: ${{ fromJson(needs.generateInputPaths.outputs.schemas) }}
-        index: ${{ fromJson(needs.generateInputPaths.outputs.index) }}
-        contexts: ${{ fromJson(needs.generateInputPaths.outputs.contexts) }}
+#         index: ${{ fromJson(needs.generateInputPaths.outputs.index) }}
+#         contexts: ${{ fromJson(needs.generateInputPaths.outputs.contexts) }}
     steps:
     - name: Checkout
       uses: actions/checkout@v3
