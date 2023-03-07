@@ -48,7 +48,7 @@ jobs:
       uses: actions/checkout@v3
     - name: Setup Pages
       uses: actions/configure-pages@v2
-    - run: echo ${{ fromJSON(needs.generateInputPaths.outputs.matrix) }}"
+    - run: echo ${{ fromJSON(needs.generateInputPaths.outputs.schemas) }}"
 #     - run: |
 #         counter=0
 #         declare -A MD_Array
