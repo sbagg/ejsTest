@@ -43,17 +43,19 @@ jobs:
     strategy:
       matrix:
         schemas: ${{ fromJson(needs.generateInputPaths.outputs.schemas) }}
-#         index: ${{ fromJson(needs.generateInputPaths.outputs.index) }}
-#         contexts: ${{ fromJson(needs.generateInputPaths.outputs.contexts) }}
+        index: ${{ fromJson(needs.generateInputPaths.outputs.index) }}
+        contexts: ${{ fromJson(needs.generateInputPaths.outputs.contexts) }}
     steps:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Setup Pages
       uses: actions/configure-pages@v2
-    - run: echo "running path ${{ matrix.schemas }}"
-    - run: echo "running path ${{ matrix.index }}"
-    - run: echo "running path ${{ matrix.contexts }}"
-
+    - name: Print Schema
+      run: echo "running path ${{ matrix.schemas }}"
+    - name: Print Index
+      run: echo "running path ${{ matrix.index }}"
+    - name: Print Contexts
+      run: echo "running path ${{ matrix.contexts }}"
 #     - run: |
 #         counter=0
 #         declare -A MD_Array
