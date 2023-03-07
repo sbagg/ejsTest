@@ -34,9 +34,9 @@ jobs:
 #     echo "::set-output name={name}::{value}"
 #     "{name}={value}" >> $GITHUB_OUTPUT
     outputs:
-      schemas: ${{ steps.set-matrix.outputs.schemas }}
+#       schemas: ${{ steps.set-matrix.outputs.schemas }}
       index: ${{ steps.set-matrix.outputs.index }}
-      contexts: ${{ steps.set-matrix.outputs.contexts }}
+#       contexts: ${{ steps.set-matrix.outputs.contexts }}
 
   # Build job
   build:
@@ -44,18 +44,18 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        schemas: ${{ fromJson(needs.generateInputPaths.outputs.schemas) }}
+#         schemas: ${{ fromJson(needs.generateInputPaths.outputs.schemas) }}
         index: ${{ fromJson(needs.generateInputPaths.outputs.index) }}
-        contexts: ${{ fromJson(needs.generateInputPaths.outputs.contexts) }}
+#         contexts: ${{ fromJson(needs.generateInputPaths.outputs.contexts) }}
     steps:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Setup Pages
       uses: actions/configure-pages@v2
-    - name: Print Schema
-      run: echo "running path ${{ matrix.schemas }}"
-#     - name: Print Index
-#       run: echo "running path ${{ matrix.index }}"
+#     - name: Print Schema
+#       run: echo "running path ${{ matrix.schemas }}"
+    - name: Print Index
+      run: echo "running path ${{ matrix.index }}"
 #     - name: Print Contexts
 #       run: echo "running path ${{ matrix.contexts }}"
 #     - run: |
