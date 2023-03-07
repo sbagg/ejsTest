@@ -42,13 +42,18 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        path: ${{ fromJson(needs.generateInputPaths.outputs.schemas) }}
+        schemas: ${{ fromJson(needs.generateInputPaths.outputs.schemas) }}
+        index: ${{ fromJson(needs.generateInputPaths.outputs.index) }}
+        contexts: ${{ fromJson(needs.generateInputPaths.outputs.contexts) }}
     steps:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Setup Pages
       uses: actions/configure-pages@v2
-    - run: echo ${{ fromJSON(needs.generateInputPaths.outputs.schemas) }}"
+    - run: echo "running path ${{ matrix.schemas }}"
+    - run: echo "running path ${{ matrix.index }}"
+    - run: echo "running path ${{ matrix.contexts }}"
+
 #     - run: |
 #         counter=0
 #         declare -A MD_Array
