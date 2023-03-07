@@ -44,6 +44,7 @@ jobs:
       uses: actions/checkout@v3
     - name: Setup Pages
       uses: actions/configure-pages@v2
+    - run: "mkdir site"
   
   
   buildIndexPath:
@@ -53,12 +54,17 @@ jobs:
       matrix:
         index: ${{ fromJson(needs.generateInputPaths.outputs.index) }}
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Setup Pages
-      uses: actions/configure-pages@v2
     - name: Print Index
       run: echo "running path ${{ matrix.index }}"
+    - name: action-ejs
+      uses: jaywcjlove/action-ejs@v1.0.2
+      with:
+        template: |
+          <%= markdown %>
+        # output html path
+        vars-file: |
+          {"markdown": "${{ matrix.index }}" }
+        output: ./_site/${{ matrix.index }}.html
       
   buildSchemasPath:
     needs: generateInputPaths
