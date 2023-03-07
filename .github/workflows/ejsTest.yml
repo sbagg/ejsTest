@@ -28,7 +28,7 @@ jobs:
       - name: Generate matrix with all modules of WhatTheHack repository
         id: set-matrix
         run: |
-          echo "{index}= {$(find . -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')}" >> $GITHUB_OUTPUT
+          echo "index=$(find . -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
           echo "::set-output name=schemas::$(find ./_schemas -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')"
           echo "::set-output name=contexts::$(find ./_contexts -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')"
 #     echo "::set-output name={name}::{value}"
