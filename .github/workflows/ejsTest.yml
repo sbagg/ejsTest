@@ -60,7 +60,7 @@ jobs:
         index: ${{ fromJson(needs.generateInputPaths.outputs.index) }}
     steps:
     - name: Download a single artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v1
       with:
         name: my-site
 #     - name: Checkout
