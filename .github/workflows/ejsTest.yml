@@ -72,7 +72,7 @@ jobs:
 #       uses: actions/configure-pages@v2
     - name: Print Index
       run: |
-        ls -l
+        ls -l my-site
         pwd
         touch _site/${{ matrix.index }}.html
     - name: action-ejs
