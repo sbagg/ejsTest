@@ -39,7 +39,6 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           name: my-site
-          path: ./*
     outputs:
       schemas: ${{ steps.set-matrix.outputs.schemas }}
       index: ${{ steps.set-matrix.outputs.index }}
