@@ -94,6 +94,8 @@ jobs:
     steps:
     - name: Download a single artifact
       uses: actions/download-artifact@v1
+      with:
+          name: artifact
     - name: Print Schema
       run: |
         ls -l
