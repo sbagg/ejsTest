@@ -28,8 +28,8 @@ jobs:
       - name: Generate matrix with all modules of WhatTheHack repository
         id: set-matrix
         run: |
-          mkdir build
-          touch newfile.html
+          mkdir _site
+          touch _site/newfile.html
           ls -l
           echo "index=$(find . -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
           echo "schemas=$(find ./_schemas -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
