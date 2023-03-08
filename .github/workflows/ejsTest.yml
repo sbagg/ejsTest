@@ -31,14 +31,13 @@ jobs:
       - name: Generate matrix
         id: set-matrix
         run: |
-          mkdir ./_site/
           echo "index=$(find . -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
           echo "schemas=$(find ./_schemas -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
           echo "contexts=$(find ./_contexts -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          name: my-site
+#       - name: Upload artifact
+#         uses: actions/upload-pages-artifact@v1
+#         with:
+#           name: my-site
     outputs:
       schemas: ${{ steps.set-matrix.outputs.schemas }}
       index: ${{ steps.set-matrix.outputs.index }}
@@ -61,19 +60,17 @@ jobs:
       matrix:
         index: ${{ fromJson(needs.generateInputPaths.outputs.index) }}
     steps:
-    - name: Download a single artifact
-      uses: actions/download-artifact@v1
-      with:
-        name: my-site
-#     - name: Checkout
-#       uses: actions/checkout@v3
-#     - name: Setup Pages
-#       uses: actions/configure-pages@v2
+#     - name: Download a single artifact
+#       uses: actions/download-artifact@v1
+#       with:
+#         name: my-site
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Setup Pages
+      uses: actions/configure-pages@v2
     - name: Print Index
       run: |
-        ls -l 
-        cd my-site/
-        ls -l 
+        mkdir ./_site/
     - name: Create Files
       run: touch _site/${{ matrix.index }}.html
     - name: action-ejs
