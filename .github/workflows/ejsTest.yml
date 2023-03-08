@@ -83,7 +83,6 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
       with:
-        name: my-site
         path: ./_site/
         
   buildSchemasPath:
@@ -95,12 +94,9 @@ jobs:
     steps:
     - name: Download a single artifact
       uses: actions/download-artifact@v1
-      with:
-        name: my-site
     - name: Print Schema
       run: |
         ls -l
-        cd my-site
         echo "running path ${{ matrix.schemas }}"
       
   buildContextsPath:
