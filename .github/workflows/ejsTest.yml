@@ -60,10 +60,6 @@ jobs:
       matrix:
         index: ${{ fromJson(needs.generateInputPaths.outputs.index) }}
     steps:
-#     - name: Download a single artifact
-#       uses: actions/download-artifact@v1
-#       with:
-#         name: my-site
     - name: Checkout
       uses: actions/checkout@v3
     - name: Setup Pages
@@ -91,14 +87,20 @@ jobs:
         path: ./_site/
         
   buildSchemasPath:
-    needs: generateInputPaths
+    needs: [generateInputPaths, buildIndexPath]
     runs-on: ubuntu-latest
     strategy:
       matrix:
         schemas: ${{ fromJson(needs.generateInputPaths.outputs.schemas) }}
     steps:
+    - name: Download a single artifact
+      uses: actions/download-artifact@v1
+      with:
+        name: my-site
     - name: Print Schema
-      run: echo "running path ${{ matrix.schemas }}"
+      run: |
+        ls -l
+        echo "running path ${{ matrix.schemas }}"
       
   buildContextsPath:
     needs: generateInputPaths
