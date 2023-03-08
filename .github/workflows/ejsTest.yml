@@ -24,8 +24,11 @@ jobs:
   generateInputPaths:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Generate matrix with all modules of WhatTheHack repository
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+      - name: Generate matrix
         id: set-matrix
         run: |
           mkdir ./_site/
