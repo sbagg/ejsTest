@@ -59,17 +59,17 @@ jobs:
       run: | 
         ls -l
         touch _site/${{ matrix.index }}.html
-    - name: action-ejs
-      uses: jaywcjlove/action-ejs@v1.0.2
-      with:
-        template: |
-          <main class="page-content" aria-label="Content">
-            <%= markdown %>
-          </main>
-        # output html path
-        vars-file: |
-          {"markdown": "${{ matrix.index }}" }
-        output: _site/${{ matrix.index }}.html
+#     - name: action-ejs
+#       uses: jaywcjlove/action-ejs@v1.0.2
+#       with:
+#         template: |
+#           <main class="page-content" aria-label="Content">
+#             <%= markdown %>
+#           </main>
+#         # output html path
+#         vars-file: |
+#           {"markdown": "${{ matrix.index }}" }
+#         output: _site/${{ matrix.index }}.html
         
   buildSchemasPath:
     needs: generateInputPaths
@@ -84,17 +84,17 @@ jobs:
       uses: actions/configure-pages@v2
     - name: Create Files
       run: touch _site/${{ matrix.schemas }}.html
-    - name: action-ejs
-      uses: jaywcjlove/action-ejs@v1.0.2
-      with:
-        template: |
-          <main class="page-content" aria-label="Content">
-            <%= markdown %>
-          </main>
-        # output html path
-        vars-file: |
-          {"markdown": "${{ matrix.schemas }}" }
-        output: _site/${{ matrix.schemas }}.html
+#     - name: action-ejs
+#       uses: jaywcjlove/action-ejs@v1.0.2
+#       with:
+#         template: |
+#           <main class="page-content" aria-label="Content">
+#             <%= markdown %>
+#           </main>
+#         # output html path
+#         vars-file: |
+#           {"markdown": "${{ matrix.schemas }}" }
+#         output: _site/${{ matrix.schemas }}.html
 
       
   buildContextsPath:
@@ -110,17 +110,17 @@ jobs:
       uses: actions/configure-pages@v2
     - name: Create Files
       run: touch _site/${{ matrix.contexts }}.html
-    - name: action-ejs
-      uses: jaywcjlove/action-ejs@v1.0.2
-      with:
-        template: |
-          <main class="page-content" aria-label="Content">
-            <%= markdown %>
-          </main>
-        # output html path
-        vars-file: |
-          {"markdown": "${{ matrix.contexts }}" }
-        output: _site/${{ matrix.contexts }}.html
+#     - name: action-ejs
+#       uses: jaywcjlove/action-ejs@v1.0.2
+#       with:
+#         template: |
+#           <main class="page-content" aria-label="Content">
+#             <%= markdown %>
+#           </main>
+#         # output html path
+#         vars-file: |
+#           {"markdown": "${{ matrix.contexts }}" }
+#         output: _site/${{ matrix.contexts }}.html
   # Build job
   build:
     runs-on: ubuntu-latest
