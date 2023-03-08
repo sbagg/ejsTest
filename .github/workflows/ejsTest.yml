@@ -55,7 +55,7 @@ jobs:
         index: ${{ fromJson(needs.generateInputPaths.outputs.index) }}
     steps:
     - name: Print Index
-      run: touch build/demo.html
+      run: echo '' > build/demo.html
     - name: action-ejs
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
