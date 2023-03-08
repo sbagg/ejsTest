@@ -73,9 +73,10 @@ jobs:
     - name: Print Index
       run: |
         cd my-site/
+        tar -x artifact.tar
         ls -l 
-        pwd
-        touch _site/${{ matrix.index }}.html
+    - name: Create Files
+      run: touch _site/${{ matrix.index }}.html
     - name: action-ejs
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
