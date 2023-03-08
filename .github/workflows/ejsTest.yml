@@ -57,12 +57,14 @@ jobs:
         index: ${{ fromJson(needs.generateInputPaths.outputs.index) }}
     steps:
     - name: Print Index
-      run: ls -l
+      run: touch _site/"${{ matrix.index }}".html
     - name: action-ejs
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
         template: |
-          <%= markdown %>
+          <main class="page-content" aria-label="Content">
+            <%= markdown %>
+          </main>
         # output html path
         vars-file: |
           {"markdown": "${{ matrix.index }}" }
