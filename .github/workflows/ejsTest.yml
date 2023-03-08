@@ -71,8 +71,8 @@ jobs:
 #       uses: actions/configure-pages@v2
     - name: Print Index
       run: |
+        ls -l 
         cd my-site/
-        tar –x artifact.tar
         ls -l 
     - name: Create Files
       run: touch _site/${{ matrix.index }}.html
