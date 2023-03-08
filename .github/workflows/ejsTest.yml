@@ -29,7 +29,8 @@ jobs:
         id: set-matrix
         run: |
           mkdir build
-          touch newfile.txt
+          touch newfile.html
+          ls -l
           echo "index=$(find . -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
           echo "schemas=$(find ./_schemas -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
           echo "contexts=$(find ./_contexts -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
@@ -65,7 +66,7 @@ jobs:
         # output html path
         vars-file: |
           {"markdown": "${{ matrix.index }}" }
-        output: /build/demo.html
+        output: ./newfile.html
         
   buildSchemasPath:
     needs: generateInputPaths
