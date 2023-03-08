@@ -73,7 +73,7 @@ jobs:
     - name: Print Index
       run: |
         cd my-site/
-        tar -x artifact.tar
+        tar –xvf artifact.tar
         ls -l 
     - name: Create Files
       run: touch _site/${{ matrix.index }}.html
