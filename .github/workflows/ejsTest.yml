@@ -131,7 +131,7 @@ jobs:
       uses: actions/configure-pages@v2
     - name: Create Files
       run: | 
-        ls -l
+        ls -l test/
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
       with:
