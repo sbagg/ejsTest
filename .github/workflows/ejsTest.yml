@@ -57,7 +57,7 @@ jobs:
     - name: Create Files
       run: | 
         ls -l
-        touch test/${{ matrix.index }}.html
+        touch _site/${{ matrix.index }}.html
     - name: action-ejs
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
@@ -68,11 +68,11 @@ jobs:
         # output html path
         vars-file: |
           {"markdown": "${{ matrix.index }}" }
-        output: test/${{ matrix.index }}.html
+        output: _site/${{ matrix.index }}.html
     - uses: actions/upload-artifact@master
       with:
         name: my-artifact
-        path: ./test/
+        path: ./_site/
         
   buildSchemasPath:
     needs: generateInputPaths
@@ -86,7 +86,7 @@ jobs:
     - name: Setup Pages
       uses: actions/configure-pages@v2
     - name: Create Files
-      run: touch test/${{ matrix.schemas }}.html
+      run: touch _site/${{ matrix.schemas }}.html
     - name: action-ejs
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
@@ -97,11 +97,11 @@ jobs:
         # output html path
         vars-file: |
           {"markdown": "${{ matrix.schemas }}" }
-        output: test/${{ matrix.schemas }}.html
+        output: _site/${{ matrix.schemas }}.html
     - uses: actions/upload-artifact@master
       with:
         name: my-artifact
-        path: ./test/
+        path: ./_site/
 
 
       
@@ -117,7 +117,7 @@ jobs:
     - name: Setup Pages
       uses: actions/configure-pages@v2
     - name: Create Files
-      run: touch test/${{ matrix.contexts }}.html
+      run: touch _site/${{ matrix.contexts }}.html
     - name: action-ejs
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
@@ -128,11 +128,11 @@ jobs:
         # output html path
         vars-file: |
           {"markdown": "${{ matrix.contexts }}" }
-        output: test/${{ matrix.contexts }}.html
+        output: _site/${{ matrix.contexts }}.html
     - uses: actions/upload-artifact@master
       with:
         name: my-artifact
-        path: ./test/
+        path: ./_site/
   # Build job
   build:
     runs-on: ubuntu-latest
@@ -145,7 +145,7 @@ jobs:
     - uses: actions/download-artifact@master
       with:
         name: my-artifact
-        path: ./test/
+        path: ./_site/
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
 
