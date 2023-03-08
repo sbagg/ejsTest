@@ -33,6 +33,11 @@ jobs:
           echo "index=$(find . -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
           echo "schemas=$(find ./_schemas -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
           echo "contexts=$(find ./_contexts -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          name: my-site
+          path: ./_site/
     outputs:
       schemas: ${{ steps.set-matrix.outputs.schemas }}
       index: ${{ steps.set-matrix.outputs.index }}
@@ -55,6 +60,10 @@ jobs:
       matrix:
         index: ${{ fromJson(needs.generateInputPaths.outputs.index) }}
     steps:
+    - name: Download a single artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: my-site
     - name: Checkout
       uses: actions/checkout@v3
     - name: Setup Pages
@@ -74,6 +83,11 @@ jobs:
         vars-file: |
           {"markdown": "${{ matrix.index }}" }
         output: _site/${{ matrix.index }}.html
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        name: my-site
+        path: ./_site/
         
   buildSchemasPath:
     needs: generateInputPaths
