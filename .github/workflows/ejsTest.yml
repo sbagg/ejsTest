@@ -87,17 +87,22 @@ jobs:
       uses: actions/configure-pages@v2
     - name: Create Files
       run: touch test/${{ matrix.schemas }}.html
-#     - name: action-ejs
-#       uses: jaywcjlove/action-ejs@v1.0.2
-#       with:
-#         template: |
-#           <main class="page-content" aria-label="Content">
-#             <%= markdown %>
-#           </main>
-#         # output html path
-#         vars-file: |
-#           {"markdown": "${{ matrix.schemas }}" }
-#         output: test/${{ matrix.schemas }}.html
+    - name: action-ejs
+      uses: jaywcjlove/action-ejs@v1.0.2
+      with:
+        template: |
+          <main class="page-content" aria-label="Content">
+            <%= markdown %>
+          </main>
+        # output html path
+        vars-file: |
+          {"markdown": "${{ matrix.schemas }}" }
+        output: test/${{ matrix.schemas }}.html
+    - uses: actions/upload-artifact@master
+      with:
+        name: my-artifact
+        path: ./test/
+
 
       
   buildContextsPath:
@@ -113,17 +118,21 @@ jobs:
       uses: actions/configure-pages@v2
     - name: Create Files
       run: touch test/${{ matrix.contexts }}.html
-#     - name: action-ejs
-#       uses: jaywcjlove/action-ejs@v1.0.2
-#       with:
-#         template: |
-#           <main class="page-content" aria-label="Content">
-#             <%= markdown %>
-#           </main>
-#         # output html path
-#         vars-file: |
-#           {"markdown": "${{ matrix.contexts }}" }
-#         output: test/${{ matrix.contexts }}.html
+    - name: action-ejs
+      uses: jaywcjlove/action-ejs@v1.0.2
+      with:
+        template: |
+          <main class="page-content" aria-label="Content">
+            <%= markdown %>
+          </main>
+        # output html path
+        vars-file: |
+          {"markdown": "${{ matrix.contexts }}" }
+        output: test/${{ matrix.contexts }}.html
+    - uses: actions/upload-artifact@master
+      with:
+        name: my-artifact
+        path: ./test/
   # Build job
   build:
     runs-on: ubuntu-latest
@@ -133,14 +142,14 @@ jobs:
       uses: actions/checkout@v3
     - name: Setup Pages
       uses: actions/configure-pages@v2
-#     - name: Create Files
-#       run: | 
-#         ls -l test/
     - uses: actions/download-artifact@master
       with:
         name: my-artifact
         path: ./test/
-    - run: ls ./test/
+    - run: | 
+        ls ./test/
+        ls ./test/_schemas/
+        ls ./test/_contexts/
 
 #     - name: action-ejs
 #       uses: jaywcjlove/action-ejs@v1.0.2
