@@ -29,6 +29,7 @@ jobs:
         id: set-matrix
         run: |
           mkdir build
+          ls -l
           echo "index=$(find . -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
           echo "schemas=$(find ./_schemas -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
           echo "contexts=$(find ./_contexts -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
