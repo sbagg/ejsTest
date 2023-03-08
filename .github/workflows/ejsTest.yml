@@ -146,27 +146,10 @@ jobs:
       with:
         name: my-artifact
         path: ./test/
-    - run: | 
-        echo "Index"
-        ls ./test/
-        echo "Schemas"
-        ls ./test/_schemas/
-        echo "Contexts"
-        ls ./test/_contexts/
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1
 
-#     - name: action-ejs
-#       uses: jaywcjlove/action-ejs@v1.0.2
-#       with:
-#         template: |
-#           <%= markdown %>
-#         # output html path
-#         vars-file: |
-#           {"markdown": "./about.md" }
-#         output: ./_site/index.html
-#     - name: Upload artifact
-#       uses: actions/upload-pages-artifact@v1
-#       with:
-#         path: ./_site/
+
 # # Deployment job
 #   deploy:
 #     environment:
