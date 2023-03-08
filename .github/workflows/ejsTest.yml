@@ -29,7 +29,6 @@ jobs:
         id: set-matrix
         run: |
           mkdir _site
-          ls -l
           echo "index=$(find . -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
           echo "schemas=$(find ./_schemas -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
           echo "contexts=$(find ./_contexts -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
@@ -71,6 +70,7 @@ jobs:
     - name: Print Index
       run: |
         ls -l
+        pwd
         touch _site/${{ matrix.index }}.html
     - name: action-ejs
       uses: jaywcjlove/action-ejs@v1.0.2
