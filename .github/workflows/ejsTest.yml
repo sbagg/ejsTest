@@ -31,9 +31,9 @@ jobs:
       - name: Generate matrix
         id: set-matrix
         run: |
-          echo "index=$(find . -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
-          echo "schemas=$(find ./_schemas -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
-          echo "contexts=$(find ./_contexts -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split("\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
+          echo "index=$(find . -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split(".md\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
+          echo "schemas=$(find ./_schemas -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split(".md\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
+          echo "contexts=$(find ./_contexts -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split(".md\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
 #       - name: Upload artifact
 #         uses: actions/upload-pages-artifact@v1
 #         with:
@@ -147,8 +147,11 @@ jobs:
         name: my-artifact
         path: ./test/
     - run: | 
+        echo "Index"
         ls ./test/
+        echo "Schemas"
         ls ./test/_schemas/
+        echo "Contexts"
         ls ./test/_contexts/
 
 #     - name: action-ejs
