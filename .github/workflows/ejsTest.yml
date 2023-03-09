@@ -67,7 +67,7 @@ jobs:
           </main>
         # output html path
         vars-file: |
-          {"markdown": "${{ matrix.index }}" }
+          {"markdown": "${{ matrix.index }}.md" }
         output: _site/${{ matrix.index }}.html
     - uses: actions/upload-artifact@master
       with:
@@ -96,7 +96,7 @@ jobs:
           </main>
         # output html path
         vars-file: |
-          {"markdown": "${{ matrix.schemas }}" }
+          {"markdown": "${{ matrix.schemas }}.md" }
         output: _site/${{ matrix.schemas }}.html
     - uses: actions/upload-artifact@master
       with:
@@ -127,7 +127,7 @@ jobs:
           </main>
         # output html path
         vars-file: |
-          {"markdown": "${{ matrix.contexts }}" }
+          {"markdown": "${{ matrix.contexts }}.md" }
         output: _site/${{ matrix.contexts }}.html
     - uses: actions/upload-artifact@master
       with:
