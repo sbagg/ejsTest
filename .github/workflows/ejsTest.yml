@@ -51,16 +51,11 @@ jobs:
     - name: Setup Pages
       uses: actions/configure-pages@v2
     - name: Create Files
-      run: | 
-        ls -l
-        touch _site/${{ matrix.index }}.html
+      run: touch _site/${{ matrix.index }}.html
     - name: action-ejs
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
-        template: |
-          <main class="page-content" aria-label="Content">
-            <%= markdown %>
-          </main>
+        template-file: ./views/pages/${{ matrix.index }}.ejs
         # output html path
         vars-file: |
           {"markdown": "${{ matrix.index }}.md" }
