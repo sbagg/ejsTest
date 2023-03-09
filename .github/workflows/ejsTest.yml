@@ -59,7 +59,7 @@ jobs:
         # output html path
         vars-file: |
           {"markdown": "${{ matrix.index }}.md" }
-        output: _site/${{ matrix.index }}/index.html
+        output: _site/${{ matrix.index }}.html
     - uses: actions/upload-artifact@master
       with:
         name: github-pages
@@ -81,14 +81,11 @@ jobs:
     - name: action-ejs
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
-        template: |
-          <main class="page-content" aria-label="Content">
-            <%= markdown %>
-          </main>
+        template-file: ./views/pages/_schemas/article.ejs
         # output html path
         vars-file: |
-          {"markdown": "${{ matrix.schemas }}.md" }
-        output: _site/${{ matrix.schemas }}.html
+          {"markdown": "_schemas/${{ matrix.schemas }}.md" }
+        output: _site/${{ matrix.schemas }}/index.html
     - uses: actions/upload-artifact@master
       with:
         name: github-pages
