@@ -6,7 +6,7 @@ layout: home
 title: UC Davis Library Schema
 ---
 
-# Project Overview
+# Project Overview Index
 
 [UC Davis Library Schema](https://schema.library.ucdavis.edu) describes the
 linked data schemas and custom properties and objects used in Library
