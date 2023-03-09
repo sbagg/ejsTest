@@ -77,7 +77,7 @@ jobs:
     - name: Setup Pages
       uses: actions/configure-pages@v2
     - name: Create Files
-      run: touch _site/${{ matrix.schemas }}.html
+      run: touch _site/${{ matrix.schemas }}/index.html
     - name: action-ejs
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
