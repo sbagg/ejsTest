@@ -34,10 +34,6 @@ jobs:
           echo "index=$(find . -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split(".md\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
           echo "schemas=$(find ./_schemas -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split(".md\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
           echo "contexts=$(find ./_contexts -maxdepth 1 -name '*.md' -type f -print | jq -R -s -c 'split(".md\n") | map(select(length > 0))')" >> $GITHUB_OUTPUT
-#       - name: Upload artifact
-#         uses: actions/upload-pages-artifact@v1
-#         with:
-#           name: my-site
     outputs:
       schemas: ${{ steps.set-matrix.outputs.schemas }}
       index: ${{ steps.set-matrix.outputs.index }}
@@ -71,7 +67,7 @@ jobs:
         output: _site/${{ matrix.index }}.html
     - uses: actions/upload-artifact@master
       with:
-        name: my-artifact
+        name: github-pages
         path: ./_site/
         
   buildSchemasPath:
@@ -100,7 +96,7 @@ jobs:
         output: _site/${{ matrix.schemas }}.html
     - uses: actions/upload-artifact@master
       with:
-        name: my-artifact
+        name: github-pages
         path: ./_site/
 
 
@@ -131,7 +127,7 @@ jobs:
         output: _site/${{ matrix.contexts }}.html
     - uses: actions/upload-artifact@master
       with:
-        name: my-artifact
+        name: github-pages
         path: ./_site/
   # Build job
   build:
@@ -144,7 +140,7 @@ jobs:
       uses: actions/configure-pages@v2
     - uses: actions/download-artifact@master
       with:
-        name: my-artifact
+        name: github-pages
         path: ./_site/
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
