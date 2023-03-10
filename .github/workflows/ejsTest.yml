@@ -136,7 +136,7 @@ jobs:
     - uses: actions/download-artifact@master
       with:
         name: github-pages
-        path: ./_site/
+        path: ./
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
 # Deployment job
