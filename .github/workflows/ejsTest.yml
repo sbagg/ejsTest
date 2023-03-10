@@ -86,7 +86,7 @@ jobs:
         template-file: ./views/pages/_schemas/article.ejs
         # output html path
         vars-file: |
-          {"markdown": "_schemas/${{ matrix.schemas }}.md" }
+          {"markdown": "${{ matrix.schemas }}.md" }
         output: _site/${{ matrix.schemas }}/index.html
     - uses: actions/upload-artifact@master
       with:
