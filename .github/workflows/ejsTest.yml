@@ -137,6 +137,7 @@ jobs:
       with:
         name: github-pages
         path: ./_site/
+    - run: ls -l
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
 # Deployment job
