@@ -55,11 +55,11 @@ jobs:
     - name: action-ejs
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
-        template-file: ./views/pages/${{ matrix.index }}.ejs
+        template-file: ./views/pages/index.ejs
         # output html path
         vars-file: |
-          {"markdown": "${{ matrix.index }}.md" }
-        output: _site/${{ matrix.index }}.html
+          {"markdown": "index.md" }
+        output: _site/index.html
     - uses: actions/upload-artifact@master
       with:
         name: github-pages
