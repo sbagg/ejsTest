@@ -55,11 +55,7 @@ jobs:
     - name: action-ejs
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
-        template: |
-          <main class="page-content" aria-label="Content">
-            <%= markdown %>
-          </main>
-        #template-file: ./views/pages/${{ matrix.index }}.ejs
+        template-file: ./views/pages/${{ matrix.index }}.ejs
         # output html path
         vars-file: |
           {"markdown": "${{ matrix.index }}.md" }
