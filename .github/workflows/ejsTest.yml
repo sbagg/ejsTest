@@ -143,7 +143,7 @@ jobs:
 #       with:
 #         name: github-pages
 #         path: ./_site/
-    - run: rm -rf .
+    - run: rm -rf ./_site/
     - name: Upload pages artifact
       uses: actions/upload-pages-artifact@v1
 
