@@ -134,11 +134,14 @@ jobs:
     - name: Setup Pages
       uses: actions/configure-pages@v2
     - run: rm -r ./_site/*
-    - name: Download artifact 
-      uses: actions/download-artifact@master
-      with:
-        name: github-pages
-        path: ./_site/
+    - run: ls .
+    - run: ls ./_site/
+
+#     - name: Download artifact 
+#       uses: actions/download-artifact@master
+#       with:
+#         name: github-pages
+#         path: ./_site/
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
 # Deployment job
