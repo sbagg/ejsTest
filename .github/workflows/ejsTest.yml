@@ -138,7 +138,7 @@ jobs:
       with:
         name: github-pages
         path: ./_site/
-    - run: rm -r ./_site/* !("artifact.tar")
+    - run: find ./_site/* ! -name "*.tar" -exec rm -r {} \;
     - run: ls .
     - run: ls ./_site/
     - name: Upload artifact
