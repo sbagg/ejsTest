@@ -51,7 +51,7 @@ jobs:
     - name: Setup Pages
       uses: actions/configure-pages@v2
     - name: Create Files
-      run: touch _site/${{ matrix.index }}.html
+      run: touch temp_site/${{ matrix.index }}.html
     - name: action-ejs
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
@@ -59,11 +59,11 @@ jobs:
         # output html path
         vars-file: |
           {"markdown": "${{ matrix.index }}.md" }
-        output: _site/${{ matrix.index }}.html
+        output: temp_site/${{ matrix.index }}.html
     - uses: actions/upload-artifact@master
       with:
         name: github-pages
-        path: ./_site/
+        path: ./temp_site/
         
   buildSchemasPath:
     needs: generateInputPaths
@@ -78,8 +78,8 @@ jobs:
       uses: actions/configure-pages@v2
     - name: Create Files
       run: |
-        mkdir _site/${{ matrix.schemas }}
-        touch _site/${{ matrix.schemas }}/index.html
+        mkdir temp_site/${{ matrix.schemas }}
+        touch temp_site/${{ matrix.schemas }}/index.html
     - name: action-ejs
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
@@ -87,11 +87,11 @@ jobs:
         # output html path
         vars-file: |
           {"markdown": "${{ matrix.schemas }}.md" }
-        output: _site/${{ matrix.schemas }}/index.html
+        output: temp_site/${{ matrix.schemas }}/index.html
     - uses: actions/upload-artifact@master
       with:
         name: github-pages
-        path: ./_site/
+        path: ./temp_site/
 
 
       
@@ -107,7 +107,7 @@ jobs:
     - name: Setup Pages
       uses: actions/configure-pages@v2
     - name: Create Files
-      run: touch _site/${{ matrix.contexts }}.html
+      run: touch temp_site/${{ matrix.contexts }}.html
     - name: action-ejs
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
@@ -118,11 +118,11 @@ jobs:
         # output html path
         vars-file: |
           {"markdown": "${{ matrix.contexts }}.md" }
-        output: _site/${{ matrix.contexts }}.html
+        output: temp_site/${{ matrix.contexts }}.html
     - uses: actions/upload-artifact@master
       with:
         name: github-pages
-        path: ./_site/
+        path: ./temp_site/
         
   # Build job
   build:
