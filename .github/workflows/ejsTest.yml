@@ -151,7 +151,7 @@ jobs:
 #     - uses: actions/upload-artifact@master
 #       with:
 #         name: x-pages
-        path: ./temp_site/
+#         path: ./temp_site/
         
         
   # Build job
