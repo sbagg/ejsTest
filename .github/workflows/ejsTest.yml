@@ -28,6 +28,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v2
+      - name: MD-Transformer
+      - run:  ls -l
       - name: Generate matrix
         id: set-matrix
         run: |
