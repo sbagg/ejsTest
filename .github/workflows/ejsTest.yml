@@ -29,7 +29,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: MD-Transformer
-      - run:  ls -l
+        run:  ls -l
       - name: Generate matrix
         id: set-matrix
         run: |
