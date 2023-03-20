@@ -31,7 +31,7 @@ jobs:
       - name: Node Install
         run:  (cd ./md_transformer; npm install)
       - name: MD-Transformer
-        run:  node ./md_transformer/md_transformer.js ./ucdlib.owl.jsonld
+        run:  (cd ./md_transformer; node ./md_transformer.js ../ucdlib.owl.jsonld)
       - name: Generate matrix
         id: set-matrix
         run: |
