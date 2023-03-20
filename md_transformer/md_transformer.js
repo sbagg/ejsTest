@@ -210,13 +210,7 @@ ${group_description}
     group_content += group_property;
 
   } else {
-    group_class = `---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-        
-layout: schema
-title: UC Davis Library Schema
----
+    group_class = `
 | layout| title |
 | ------------- |:-------------:|
 | schema     | ${schema}     |
