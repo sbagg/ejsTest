@@ -127,31 +127,32 @@ jobs:
         path: ./temp_site/
         
         
-#   buildCollectionPage:
-#     needs: buildSchemasPath
-#     runs-on: ubuntu-latest
-#     strategy:
-#       matrix:
-#         schemas: ${{ fromJson(needs.generateInputPaths.outputs.schemas) }}
-#     steps:
-#     - name: Checkout
-#       uses: actions/checkout@v3
-#     - name: Setup Pages
-#       uses: actions/configure-pages@v2
-#     - name: Create Files
-#       run: touch temp_site/${{ matrix.index }}.html
-#     - name: action-ejs
-#       uses: jaywcjlove/action-ejs@v1.0.2
-#       with:
-#         template-file: ./views/pages/${{ matrix.index }}.ejs
-#         # output html path
-#         vars-file: |
-#           {"markdown": "${{ matrix.index }}.md" }
-#         output: temp_site/${{ matrix.index }}.html
-#     - uses: actions/upload-artifact@master
-#       with:
-#         name: x-pages
-#         path: ./temp_site/
+  buildCollectionPage:
+    needs: buildSchemasPath
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        schemas: ${{ fromJson(needs.generateInputPaths.outputs.schemas) }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Setup Pages
+      uses: actions/configure-pages@v2
+    - name: Create Files
+      run: |
+        mkdir temp_site/_schemas/
+    - name: action-ejs
+      uses: jaywcjlove/action-ejs@v1.0.2
+      with:
+        template-file: ./views/pages/_schemas/contexts_catalog.ejs
+        # output html path
+        vars-file: |
+          {"posts": "${{ matrix.schemas }}" }
+        output: temp_site/_schemas/index.html
+    - uses: actions/upload-artifact@master
+      with:
+        name: x-pages
+        path: ./temp_site/
         
         
   # Build job
