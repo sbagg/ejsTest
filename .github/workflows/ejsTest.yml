@@ -128,7 +128,7 @@ jobs:
         
         
   buildCollectionPage:
-    needs: buildSchemasPath
+    needs: generateInputPaths
     runs-on: ubuntu-latest
     strategy:
       matrix:
