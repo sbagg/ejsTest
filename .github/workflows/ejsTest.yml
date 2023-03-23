@@ -142,7 +142,7 @@ jobs:
         do
           md_name=$(echo "$file" | awk -F "./_schemas/" '{ print $2}' | awk -F ".md" '{ print $1}')
           md_path=https://sbagg.github.io/ejsTest$(echo "$file" | awk -F "." '{ print $2}' | awk -F ".md" '{ print $1}')/index.html
-          echo "<a style="font-size:22px" href="$md_path"><div class="post">$md_name</div></a>" >> temp.html
+          echo "<a style="font-size:22px" href="$md_path"><div class="post">$md_name</div></a>" >> temp.ejs
         done
         cat temp.ejs
     - name: action-ejs
