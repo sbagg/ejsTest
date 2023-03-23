@@ -148,16 +148,16 @@ jobs:
     - name: action-ejs
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
-        template-file: ./views/pages/catalog.ejs
-#         template: |
-#           <main class="page-content" aria-label="Content">
-#             <%= posts %>
-#           </main>
+#         template-file: ./views/pages/catalog.ejs
+        template: |
+          <main class="page-content" aria-label="Content">
+            <%= posts %>
+          </main>
         # output html path
         vars-file: |
-          {"posts": "./team.md" }
+          {"posts": "team.md" }
         output: temp_site/_schemas/index.html
-    - run: rm temp.md
+#     - run: rm temp.md
     - uses: actions/upload-artifact@master
       with:
         name: x-pages
