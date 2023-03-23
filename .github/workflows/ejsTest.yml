@@ -155,7 +155,7 @@ jobs:
 #           </main>
         # output html path
         vars-file: |
-          {"posts": "./temp.md" }
+          {"posts": "./team.md" }
         output: temp_site/_schemas/index.html
     - run: rm temp.md
     - uses: actions/upload-artifact@master
