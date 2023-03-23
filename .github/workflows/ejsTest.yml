@@ -144,7 +144,7 @@ jobs:
           md_path=https://sbagg.github.io/ejsTest$(echo "$file" | awk -F "." '{ print $2}' | awk -F ".md" '{ print $1}')/index.html
           echo "###### [$md_name]($md_path)" >> temp.md
         done
-        cat temp.md
+        ls -l
     - name: action-ejs
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
@@ -155,7 +155,7 @@ jobs:
 #           </main>
         # output html path
         vars-file: |
-          {"posts": "temp.md" }
+          {"posts": "./temp.md" }
         output: temp_site/_schemas/index.html
     - run: rm temp.md
     - uses: actions/upload-artifact@master
