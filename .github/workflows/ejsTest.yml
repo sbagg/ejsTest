@@ -1,10 +1,9 @@
-# Sample workflow for building and deploying a Action-EJS site to GitHub Pages
-name: Deploy action-ejs with GitHub Pages dependencies preinstalled
+name: Deploy EJS with GitHub Pages dependencies preinstalled
 
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: ["actionEJS"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -43,6 +42,7 @@ jobs:
       index: ${{ steps.set-matrix.outputs.index }}
       contexts: ${{ steps.set-matrix.outputs.contexts }}
   
+  #Build the Index Markdown Paths
   buildIndexPath:
     needs: generateInputPaths
     runs-on: ubuntu-latest
@@ -68,7 +68,8 @@ jobs:
       with:
         name: x-pages
         path: ./temp_site/
-        
+
+  #Build the Schema Markdown Paths      
   buildSchemasPath:
     needs: generateInputPaths
     runs-on: ubuntu-latest
@@ -96,7 +97,8 @@ jobs:
       with:
         name: x-pages
         path: ./temp_site/
-      
+
+  #Build the Context Markdown Paths  
   buildContextsPath:
     needs: generateInputPaths
     runs-on: ubuntu-latest
@@ -124,7 +126,8 @@ jobs:
       with:
         name: x-pages
         path: ./temp_site/
-        
+
+  #Build Context Collection Page
   buildContextCollectionPage:
     needs: generateInputPaths
     runs-on: ubuntu-latest
@@ -139,7 +142,7 @@ jobs:
         find ./_contexts -maxdepth 1 -name '*.md' -type f -print | while read file
           do
             md_name=$(echo "$file" | awk -F "./_contexts/" '{ print $2}' | awk -F ".md" '{ print $1}')
-            md_path=https://sbagg.github.io/ejsTest$(echo "$file" | awk -F "." '{ print $2}' | awk -F ".md" '{ print $1}').json
+            md_path=https://https://sbagg.github.io/ejsTest/_contexts$(echo "$file" | awk -F "." '{ print $2}' | awk -F ".md" '{ print $1}')
             echo "###### [$md_name]($md_path)" >> temp_context.md
           done
     - name: action-ejs
@@ -156,8 +159,8 @@ jobs:
         name: x-pages
         path: ./temp_site/      
         
-        
-  buildCollectionPage:
+  #Build Schema Collection Page 
+  buildSchemaCollectionPage:
     needs: generateInputPaths
     runs-on: ubuntu-latest
     steps:
@@ -171,7 +174,7 @@ jobs:
         find ./_schemas -maxdepth 1 -name '*.md' -type f -print | while read file
         do
           md_name=$(echo "$file" | awk -F "./_schemas/" '{ print $2}' | awk -F ".md" '{ print $1}')
-          md_path=https://sbagg.github.io/ejsTest$(echo "$file" | awk -F "." '{ print $2}' | awk -F ".md" '{ print $1}')/index.html
+          md_path=https://https://sbagg.github.io/ejsTest/_schemas$(echo "$file" | awk -F "." '{ print $2}' | awk -F ".md" '{ print $1}')
           echo "###### [$md_name]($md_path)" >> temp_collection.md
         done
         ls -l
@@ -190,7 +193,7 @@ jobs:
         path: ./temp_site/
         
         
-  # Build job
+  # Build and upload to Github Pages job
   build:
     runs-on: ubuntu-latest
     needs: [buildIndexPath, buildSchemasPath, buildContextsPath]
