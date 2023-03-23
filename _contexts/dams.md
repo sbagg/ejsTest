@@ -3,4 +3,4 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 ---
-[DAMS Context](https://ucd-library.github.io/schema/@context/dams.jsonld)
+[DAMS Context](https://sbagg.github.io/schema/_context/dams.jsonld)
