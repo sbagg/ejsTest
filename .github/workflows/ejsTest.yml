@@ -137,25 +137,21 @@ jobs:
       uses: actions/configure-pages@v2
     - name: Create Collection Entries
       run: |
-        touch temp.ejs
+        touch temp.txt
         find ./_schemas -maxdepth 1 -name '*.md' -type f -print | while read file
         do
           md_name=$(echo "$file" | awk -F "./_schemas/" '{ print $2}' | awk -F ".md" '{ print $1}')
           md_path=https://sbagg.github.io/ejsTest$(echo "$file" | awk -F "." '{ print $2}' | awk -F ".md" '{ print $1}')/index.html
-          echo "<a style="font-size:22px" href="$md_path"><div class="post">$md_name</div></a>" >> temp.ejs
+          echo "<a style="font-size:22px" href="$md_path"><div class="post">$md_name</div></a>" >> temp.txt
         done
-        cat temp.ejs
+        cat temp.txt
     - name: action-ejs
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
-        template: |
-          <main class="page-content" aria-label="Content">
-            <%= posts %>
-          </main>
-#         template-file: ./views/pages/catalog.ejs
+        template-file: ./views/pages/catalog.ejs
         # output html path
         vars-file: |
-          {"posts": "temp.ejs" }
+          {"posts": "temp.txt" }
         output: temp_site/_schemas/index.html
     - uses: actions/upload-artifact@master
       with:
