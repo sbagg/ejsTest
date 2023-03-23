@@ -157,6 +157,7 @@ jobs:
         vars-file: |
           {"posts": "temp.txt" }
         output: temp_site/_schemas/index.html
+    - run: cat temp_site/_schemas/index.html
     - uses: actions/upload-artifact@master
       with:
         name: x-pages
