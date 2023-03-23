@@ -130,9 +130,6 @@ jobs:
   buildCollectionPage:
     needs: generateInputPaths
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        schemas: ${{ fromJson(needs.generateInputPaths.outputs.schemas) }}
     steps:
     - name: Checkout
       uses: actions/checkout@v3
