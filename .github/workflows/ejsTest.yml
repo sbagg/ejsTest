@@ -147,10 +147,11 @@ jobs:
           md_path=https://sbagg.github.io/ejsTest$(echo "$file" | awk -F "." '{ print $2}' | awk -F ".md" '{ print $1}')/index.html
           echo "<a style="font-size:22px" href="$md_path"><div class="post">$md_name</div></a>" >> temp.html
         done
+        cat temp.html
     - name: action-ejs
       uses: jaywcjlove/action-ejs@v1.0.2
       with:
-        template-file: ./views/pages/_schemas/catalog.ejs
+        template-file: ./views/pages/catalog.ejs
         # output html path
         vars-file: |
           {"posts": "temp.html" }
