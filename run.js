@@ -13,9 +13,9 @@ let ejs = require('ejs');
         fs.mkdirSync(tempRoot, {recursive: true});
       
         if (!fs.existsSync(tempRoot + "temp_schemas_collection.md")) 
-            fs.writeFile(tempRoot+ "temp_schemas_collection.md", data, (err) => {});
+            fs.writeFile(tempRoot+ "temp_schemas_collection.md", "", (err) => {});
         else if (!fs.existsSync(tempRoot + "temp_contexts_collection.md")) 
-            fs.writeFile(tempRoot+ "temp_contexts_collection.md", data, (err) => {});
+            fs.writeFile(tempRoot+ "temp_contexts_collection.md", "", (err) => {});
       
         for(let folder of folders){
             fs.readdirSync(folder).forEach(file => {
