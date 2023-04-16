@@ -10,6 +10,7 @@ let ejs = require('ejs');
         let schemasFolder = './_schemas/';
         let contextFolder = './_contexts/';
         let folders = [indexFolder, schemasFolder, contextFolder]
+        fs.mkdirSync(tempRoot, {recursive: true});
 
         for(let folder of folders){
             fs.readdirSync(folder).forEach(file => {
@@ -21,7 +22,7 @@ let ejs = require('ejs');
                 let typeCollection = '';
                 let viewsFolder = "./views/pages/";
                 let CollectionPath = "https://ucd-library.github.io/schema/";
-                
+
                 /* Create the following items:
                     * temp directory, 
                     * collection path variable, 
