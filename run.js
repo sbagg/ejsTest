@@ -62,19 +62,26 @@ let ejs = require('ejs');
             });
         }
 
-        // //contexts collection htmlFile then removes temp file
-        // let schemaEJS = "./views/pages/_schemas/article.ejs";
-        // let contextsEJS = "./views/pages/_contexts/contexts.ejs";
-        // addMarkdown(tempRoot + "temp_contexts_collection.md", 
-        //             contextsEJS, 
-        //             tempRoot + "_contexts/index.html");
-        // fs.unlinkSync(tempRoot + "temp_contexts_collection.md");
+        let schemaEJS = "./views/pages/_schemas/article.ejs";
+        let contextsEJS = "./views/pages/_contexts/contexts.ejs";
 
-        // //schemas collection htmlFile
-        // addMarkdown(tempRoot + "temp_schemas_collection.md", 
-        //             schemaEJS, 
-        //             tempRoot + "_schemas/index.html");
-        // fs.unlinkSync(tempRoot + "temp_schemas_collection.md");
+        if (!fs.existsSync(tempRoot + "temp_schemas_collection.md")) 
+            fs.writeFile(tempRoot+ "temp_schemas_collection.md", data, (err) => {});
+        else if (!fs.existsSync(tempRoot + "temp_contexts_collection.md")) 
+            fs.writeFile(tempRoot+ "temp_contexts_collection.md", data, (err) => {});
+
+        //contexts collection htmlFile then removes temp file
+        
+        addMarkdown(tempRoot + "temp_contexts_collection.md", 
+                    contextsEJS, 
+                    tempRoot + "_contexts/index.html");
+        fs.unlinkSync(tempRoot + "temp_contexts_collection.md");
+
+        //schemas collection htmlFile
+        addMarkdown(tempRoot + "temp_schemas_collection.md", 
+                    schemaEJS, 
+                    tempRoot + "_schemas/index.html");
+        fs.unlinkSync(tempRoot + "temp_schemas_collection.md");
 
     }
 
@@ -110,6 +117,7 @@ let ejs = require('ejs');
         let cFile = "";
         if(typeCollection == "schemas") cFile = tempRoot + "temp_schemas_collection.md";
         else if(typeCollection == "contexts") cFile = tempRoot + "temp_contexts_collection.md";
+
         let cContent = '###### [' + md_name + '](' + md_path + ')\n';
         fs.appendFile(cFile, cContent, function (err) {
             if (err) throw err;
