@@ -205,7 +205,6 @@ jobs:
       run:  (npm install ejs)
     - name: Run EJS-HTML parser
       run: node run.js
-    - name: Upload as an artifact
     - uses: actions/upload-artifact@master
       with:
           name: x-pages
