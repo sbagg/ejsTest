@@ -62,19 +62,19 @@ let ejs = require('ejs');
             });
         }
 
-        //contexts collection htmlFile then removes temp file
-        let schemaEJS = "./views/pages/_schemas/article.ejs";
-        let contextsEJS = "./views/pages/_contexts/contexts.ejs";
-        addMarkdown(tempRoot + "temp_contexts_collection.md", 
-                    contextsEJS, 
-                    tempRoot + "_contexts/index.html");
-        fs.unlinkSync(tempRoot + "temp_contexts_collection.md");
+        // //contexts collection htmlFile then removes temp file
+        // let schemaEJS = "./views/pages/_schemas/article.ejs";
+        // let contextsEJS = "./views/pages/_contexts/contexts.ejs";
+        // addMarkdown(tempRoot + "temp_contexts_collection.md", 
+        //             contextsEJS, 
+        //             tempRoot + "_contexts/index.html");
+        // fs.unlinkSync(tempRoot + "temp_contexts_collection.md");
 
-        //schemas collection htmlFile
-        addMarkdown(tempRoot + "temp_schemas_collection.md", 
-                    schemaEJS, 
-                    tempRoot + "_schemas/index.html");
-        fs.unlinkSync(tempRoot + "temp_schemas_collection.md");
+        // //schemas collection htmlFile
+        // addMarkdown(tempRoot + "temp_schemas_collection.md", 
+        //             schemaEJS, 
+        //             tempRoot + "_schemas/index.html");
+        // fs.unlinkSync(tempRoot + "temp_schemas_collection.md");
 
     }
 
