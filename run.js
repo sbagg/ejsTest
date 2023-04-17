@@ -12,10 +12,22 @@ let ejs = require('ejs');
         let folders = [indexFolder, schemasFolder, contextFolder]
         fs.mkdirSync(tempRoot, {recursive: true});
         if (!fs.existsSync(tempRoot + "temp_schemas_collection.md")) {
-            fs.writeFile(tempRoot+ "temp_schemas_collection.md", " ", (err) => {});
+            fs.writeFile(tempRoot+ "temp_schemas_collection.md", " ", (err) => {
+              console.log(err);
+            else {
+              console.log("File written successfully\n");
+              console.log("The written has the following contents:");
+              console.log(fs.readFileSync(tempRoot+ "temp_schemas_collection.md", "utf8"));
+            });
         }
         else if (!fs.existsSync(tempRoot + "temp_contexts_collection.md")) {
-            fs.writeFile(tempRoot+ "temp_contexts_collection.md", " ", (err) => {});
+            fs.writeFile(tempRoot+ "temp_contexts_collection.md", " ", (err) => {
+              console.log(err);
+            else {
+              console.log("File written successfully\n");
+              console.log("The written has the following contents:");
+              console.log(fs.readFileSync(tempRoot+ "temp_contexts_collection.md", "utf8"));
+            });
         }
         for(let folder of folders){
             fs.readdirSync(folder).forEach(file => {
