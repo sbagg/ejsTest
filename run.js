@@ -13,6 +13,7 @@ let ejs = require('ejs');
         fs.mkdirSync(tempRoot, {recursive: true});
         if (!fs.existsSync(tempRoot + "temp_schemas_collection.md")) {
             fs.writeFile(tempRoot+ "temp_schemas_collection.md", " ", (err) => {
+            if (err)
               console.log(err);
             else {
               console.log("File written successfully\n");
@@ -22,6 +23,7 @@ let ejs = require('ejs');
         }
         else if (!fs.existsSync(tempRoot + "temp_contexts_collection.md")) {
             fs.writeFile(tempRoot+ "temp_contexts_collection.md", " ", (err) => {
+            if (err)
               console.log(err);
             else {
               console.log("File written successfully\n");
