@@ -1,36 +1,24 @@
 const fs = require('fs');
 let ejs = require('ejs');
+const tempRoot = "./temp_site/"
+
 
   /**
    * @description Main function that runs ejs schema site creation 
    */
     function main() {
-        let tempRoot = "./temp_site/"
         let indexFolder = './';
         let schemasFolder = './_schemas/';
         let contextFolder = './_contexts/';
         let folders = [indexFolder, schemasFolder, contextFolder]
         fs.mkdirSync(tempRoot, {recursive: true});
-        if (!fs.existsSync(tempRoot + "temp_schemas_collection.md")) {
-            fs.writeFile(tempRoot+ "temp_schemas_collection.md", " ", (err) => {
-              if (err)
-                console.log(err);
-              else {
-                console.log("File written successfully\n");
-                console.log("The written has the following contents:");
-              }
-            });
-        }
-        else if (!fs.existsSync(tempRoot + "temp_contexts_collection.md")) {
-            fs.writeFile(tempRoot+ "temp_contexts_collection.md", " ", (err) => {
-              if (err)
-                console.log(err);
-              else {
-                console.log("File written successfully\n");
-                console.log("The written has the following contents:");
-              }
-             });
-        }
+        if (!fs.existsSync(tempRoot + "temp_schemas_collection.md")) 
+            runWriteFile(tempRoot+ "temp_schemas_collection.md", " ");
+        
+        else if (!fs.existsSync(tempRoot + "temp_contexts_collection.md")) 
+            runWriteFile(tempRoot+ "temp_contexts_collection.md", " ");
+
+        
         for(let folder of folders){
             fs.readdirSync(folder).forEach(file => {
                 let md = '';
@@ -81,6 +69,12 @@ let ejs = require('ejs');
             });
         }
 
+        collectionIndex();
+
+    }
+
+
+    function collectionIndex(){
         let schemaEJS = "./views/pages/_schemas/article.ejs";
         let contextsEJS = "./views/pages/_contexts/contexts.ejs";
 
@@ -90,15 +84,15 @@ let ejs = require('ejs');
         addMarkdown(tempRoot + "temp_contexts_collection.md", 
                     contextsEJS, 
                     tempRoot + "_contexts/index.html");
-        fs.unlinkSync(tempRoot + "temp_contexts_collection.md");
+        runDeleteFile(tempRoot + "temp_contexts_collection.md");
 
         //schemas collection htmlFile
         addMarkdown(tempRoot + "temp_schemas_collection.md", 
                     schemaEJS, 
                     tempRoot + "_schemas/index.html");
-        fs.unlinkSync(tempRoot + "temp_schemas_collection.md");
+        runDeleteFile(tempRoot + "temp_schemas_collection.md");
 
-    }
+  }
 
   /**
    * @description Adds the cooresponding markdown file to the ejs file and outputs HTML
@@ -112,10 +106,8 @@ let ejs = require('ejs');
             let mdRead = inputD.toString()
         
             ejs.renderFile(ejsFile, {markdown: mdRead}, function(err, str){
-            fs.appendFile(htmlFile, str, function (err) {
-                    if (err) throw err;
-                    console.log('Created...' + htmlFile);
-                });
+            runAppendFile(htmlFile, str)
+
             });
         })
     }
@@ -134,12 +126,46 @@ let ejs = require('ejs');
         else if(typeCollection == "contexts") cFile = tempRoot + "temp_contexts_collection.md";
 
         let cContent = '###### [' + md_name + '](' + md_path + ')\n';
-        fs.appendFile(cFile, cContent, function (err) {
-            if (err) throw err;
-            console.log('Collection Line added to: ' + cFile);
+        runAppendFile(cFile, cContent)
+    }
 
+  /**
+   * @description Run the write file function
+   * @param {String} file - File Name
+   * @param {String} data - Content of the file
+   */
+    function runWriteFile(file, data){
+        fs.writeFile(file, data, (err) => {
+            if (err)
+              console.log(err);
+            else {
+              console.log("File written successfully\n");
+            }
         });
     }
+
+  /**
+   * @description Run the append file function
+   * @param {String} file - File Name
+   * @param {String} data - Content of the file   
+   */
+   function runAppendFile(file, content, showContent=false){
+        fs.appendFile(file, content, function (err) {
+            if (err) throw err;
+            if(showContent) console.log('Collection Line added to: ' + content);
+
+        });
+   }
+
+     /**
+   * @description Run the delete file function
+   * @param {String} file - File to delete
+   */
+    function runDeleteFile(file){
+        fs.unlinkSync(file);
+    }
+
+
 
 
 if (require.main === module) {
