@@ -70,6 +70,7 @@ const tempRoot = "./temp_site/"
         }
 
         collectionIndex();
+        console.log("Temp Folder Created Successfully")
 
     }
 
@@ -77,20 +78,24 @@ const tempRoot = "./temp_site/"
     function collectionIndex(){
         let schemaEJS = "./views/pages/_schemas/article.ejs";
         let contextsEJS = "./views/pages/_contexts/contexts.ejs";
+        let schemaTemp = tempRoot + "temp_schemas_collection.md";
+        let contextsTemp = tempRoot + "temp_contexts_collection.md";
 
 
         //contexts collection htmlFile then removes temp file
         
-        addMarkdown(tempRoot + "temp_contexts_collection.md", 
+        addMarkdown(contextsTemp, 
                     contextsEJS, 
                     tempRoot + "_contexts/index.html");
-//         runDeleteFile(tempRoot + "temp_contexts_collection.md");
+        if(fs.existsSync(contextsTemp))
+            runDeleteFile(contextsTemp);
 
         //schemas collection htmlFile
-        addMarkdown(tempRoot + "temp_schemas_collection.md", 
+        addMarkdown(schemaTemp, 
                     schemaEJS, 
                     tempRoot + "_schemas/index.html");
-//         runDeleteFile(tempRoot + "temp_schemas_collection.md");
+        if(fs.existsSync(schemaTemp))
+            runDeleteFile(schemaTemp);
 
   }
 
@@ -134,12 +139,12 @@ const tempRoot = "./temp_site/"
    * @param {String} file - File Name
    * @param {String} data - Content of the file
    */
-    function runWriteFile(file, data){
+    function runWriteFile(file, data, showFile=false){
         fs.writeFile(file, data, (err) => {
             if (err)
               console.log(err);
             else {
-              console.log("File written successfully\n");
+              if(showFile) console.log("File written successfully:", file);
             }
         });
     }
