@@ -84,13 +84,13 @@ const tempRoot = "./temp_site/"
         addMarkdown(tempRoot + "temp_contexts_collection.md", 
                     contextsEJS, 
                     tempRoot + "_contexts/index.html");
-        runDeleteFile(tempRoot + "temp_contexts_collection.md");
+//         runDeleteFile(tempRoot + "temp_contexts_collection.md");
 
         //schemas collection htmlFile
         addMarkdown(tempRoot + "temp_schemas_collection.md", 
                     schemaEJS, 
                     tempRoot + "_schemas/index.html");
-        runDeleteFile(tempRoot + "temp_schemas_collection.md");
+//         runDeleteFile(tempRoot + "temp_schemas_collection.md");
 
   }
 
