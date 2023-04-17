@@ -17,7 +17,7 @@ const tempRoot = "./temp_site/"
         
         else if (!fs.existsSync(tempRoot + "temp_contexts_collection.md")) 
             runWriteFile(tempRoot+ "temp_contexts_collection.md", " ");
-
+        console.log("Files Created Successfully.");
         
         for(let folder of folders){
             fs.readdirSync(folder).forEach(file => {
