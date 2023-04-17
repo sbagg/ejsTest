@@ -203,6 +203,8 @@ jobs:
       uses: actions/configure-pages@v2
     - name: Node Install
       run:  (npm install ejs)
+    - name: MD-Transformer
+      run: cd md_transformer; npm install; node md_transformer.js ../ucdlib.owl.jsonld;
     - name: Run EJS-HTML parser
       run: node run.js
     - uses: actions/upload-artifact@master
